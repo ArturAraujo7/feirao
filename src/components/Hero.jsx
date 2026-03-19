@@ -1,133 +1,204 @@
-import React, { useState, useEffect } from 'react';
-import { ArrowRight, CheckCircle2 } from 'lucide-react';
+import React from "react";
+import imagemHero from "../assets/imagem.png";
+import Countdown from "./Countdown";
 
 const Hero = () => {
-  const [timeLeft, setTimeLeft] = useState({
-    days: 0, hours: 0, minutes: 0, seconds: 0
-  });
-
-  useEffect(() => {
-    // Set target date for the event (e.g., end of March or simply +5 days for demo)
-    const targetDate = new Date();
-    targetDate.setDate(targetDate.getDate() + 5);
-    
-    const interval = setInterval(() => {
-      const now = new Date();
-      const difference = targetDate.getTime() - now.getTime();
-      
-      if (difference > 0) {
-        setTimeLeft({
-          days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-          hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-          minutes: Math.floor((difference / 1000 / 60) % 60),
-          seconds: Math.floor((difference / 1000) % 60)
-        });
-      }
-    }, 1000);
-    
-    return () => clearInterval(interval);
-  }, []);
-
   return (
-    <section style={{ 
-      position: 'relative',
-      minHeight: '85vh',
-      display: 'flex',
-      alignItems: 'center',
-      /* Replace with an actual background image or a dark gradient */
-      background: 'linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.8)), url("https://images.unsplash.com/photo-1603584173870-7f23fdae1b7a?auto=format&fit=crop&q=80&w=1920") center/cover no-repeat',
-      color: 'white',
-      paddingTop: '80px'
-    }}>
-      <div className="container">
-        <div style={{ maxWidth: '800px' }}>
-          
-          <div style={{ 
-            display: 'inline-block',
-            backgroundColor: 'var(--primary)',
-            padding: '4px 12px',
-            borderRadius: '9999px',
-            fontSize: '0.875rem',
-            fontWeight: 700,
-            marginBottom: '24px',
-            textTransform: 'uppercase',
-            letterSpacing: '1px'
-          }}>
-            FEIRÃO LIMPA PÁTIO
+    <>
+      <section
+        id="evento"
+        className="relative pt-12 pb-20 bg-white overflow-hidden"
+      >
+        <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
+          <div style={{ opacity: 1, transform: "none" }}>
+            <h1 className="text-4xl md:text-7xl font-bold text-[#1A1A1A] leading-tight mb-6 uppercase tracking-tighter">
+              Feirão <br />
+              <span className="text-[#EC0000]">Limpa Pátio</span> <br />
+              <span className="text-2xl md:text-4xl block mt-2 text-gray-500 normal-case font-medium tracking-normal">
+                É pra vender tudo.
+              </span>
+            </h1>
+            <p className="text-lg text-gray-600 mb-10 max-w-lg leading-relaxed">
+              Participe do maior feirão da região. Oportunidade única para
+              conquistar seu veículo com as melhores condições do mercado.
+            </p>
+            <div className="space-y-4 mb-10">
+              <div className="flex items-center gap-3 text-gray-700 font-bold">
+                <div className="w-6 h-6 bg-red-50 rounded-full flex items-center justify-center text-[#EC0000]">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="lucide lucide-circle-check"
+                    aria-hidden="true"
+                  >
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <path d="m9 12 2 2 4-4"></path>
+                  </svg>
+                </div>
+                <span>+ DE 400 VEÍCULOS EM EXPOSIÇÃO</span>
+              </div>
+              <div className="flex items-center gap-3 text-gray-700 font-bold">
+                <div className="w-6 h-6 bg-red-50 rounded-full flex items-center justify-center text-[#EC0000]">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="lucide lucide-circle-check"
+                    aria-hidden="true"
+                  >
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <path d="m9 12 2 2 4-4"></path>
+                  </svg>
+                </div>
+                <span>AS MELHORES TAXAS DE FINANCIAMENTO</span>
+              </div>
+              <div className="flex items-center gap-3 text-gray-700 font-bold">
+                <div className="w-6 h-6 bg-red-50 rounded-full flex items-center justify-center text-[#EC0000]">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="lucide lucide-circle-check"
+                    aria-hidden="true"
+                  >
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <path d="m9 12 2 2 4-4"></path>
+                  </svg>
+                </div>
+                <span>APROVAÇÃO FACILITADA</span>
+              </div>
+            </div>
+            <Countdown />
+            <div className="flex flex-col sm:flex-row gap-4 mb-12">
+              <a
+                href="#cadastro"
+                className="bg-[#EC0000] text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-[#CC0000] transition-all flex items-center justify-center gap-2 group"
+              >
+                <span className="hidden md:inline">Quero </span>Participar
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="lucide lucide-arrow-right group-hover:translate-x-1 transition-transform"
+                  aria-hidden="true"
+                >
+                  <path d="M5 12h14"></path>
+                  <path d="m12 5 7 7-7 7"></path>
+                </svg>
+              </a>
+            </div>
+            <div className="flex items-center gap-6 text-sm text-gray-400 font-medium">
+              <div className="flex items-center gap-2">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="lucide lucide-circle-check text-green-500"
+                  aria-hidden="true"
+                >
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <path d="m9 12 2 2 4-4"></path>
+                </svg>
+                Sem burocracia
+              </div>
+              <div className="flex items-center gap-2">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="lucide lucide-circle-check text-green-500"
+                  aria-hidden="true"
+                >
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <path d="m9 12 2 2 4-4"></path>
+                </svg>
+                Aprovação facilitada
+              </div>
+            </div>
           </div>
-
-          <h1 style={{ 
-            fontSize: 'clamp(2.5rem, 5vw, 4.5rem)', 
-            fontWeight: 900,
-            lineHeight: 1.1,
-            marginBottom: '24px'
-          }}>
-            É pra vender tudo.
-          </h1>
-          
-          <p style={{ 
-            fontSize: '1.25rem',
-            color: '#D1D5DB', // gray-300
-            marginBottom: '40px',
-            lineHeight: 1.6
-          }}>
-            Participe do maior feirão da região. Oportunidade única para conquistar seu veículo com as melhores condições do mercado.
-          </p>
-
-          <div className="flex flex-col gap-4" style={{ marginBottom: '48px' }}>
-            <div className="flex items-center gap-2">
-              <CheckCircle2 color="var(--primary)" size={24} />
-              <span style={{ fontWeight: 600, fontSize: '1.125rem' }}>+ DE 300 VEÍCULOS EM EXPOSIÇÃO</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <CheckCircle2 color="var(--primary)" size={24} />
-              <span style={{ fontWeight: 600, fontSize: '1.125rem' }}>AS MELHORES TAXAS DE FINANCIAMENTO</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <CheckCircle2 color="var(--primary)" size={24} />
-              <span style={{ fontWeight: 600, fontSize: '1.125rem' }}>APROVAÇÃO FACILITADA</span>
-            </div>
-          </div>
-
-          {/* Countdown Timer */}
-          <div className="flex gap-4" style={{ marginBottom: '48px' }}>
-            {[
-              { label: 'Dias', value: timeLeft.days },
-              { label: 'Horas', value: timeLeft.hours },
-              { label: 'Minutos', value: timeLeft.minutes },
-              { label: 'Segundos', value: timeLeft.seconds }
-            ].map((item, idx) => (
-              <div key={idx} className="flex flex-col items-center justify-center" style={{ 
-                backgroundColor: 'rgba(255,255,255,0.1)',
-                backdropFilter: 'blur(10px)',
-                borderRadius: '12px',
-                padding: '16px 20px',
-                minWidth: '80px',
-                border: '1px solid rgba(255,255,255,0.2)'
-              }}>
-                <span style={{ fontSize: '2rem', fontWeight: 800 }}>
-                  {item.value.toString().padStart(2, '0')}
-                </span>
-                <span style={{ fontSize: '0.875rem', color: '#D1D5DB', textTransform: 'uppercase' }}>
-                  {item.label}
+          <div
+            className="relative"
+            style={{ opacity: 1, transform: "translateY(-12.0767px)" }}
+          >
+            <img
+              alt="Feirão de Carros Santander: Venda de Veículos no Pátio"
+              className="rounded-3xl shadow-2xl w-full h-[500px] object-cover"
+              referrerPolicy="no-referrer"
+              loading="eager"
+              decoding="async"
+              src={imagemHero}
+            />
+            <div className="absolute bottom-4 left-4 sm:-bottom-6 sm:-left-6 bg-white p-6 rounded-2xl shadow-xl border border-gray-100 max-w-[240px]">
+              <div className="flex items-center gap-3 mb-3">
+                <div className="w-10 h-10 bg-red-50 rounded-full flex items-center justify-center text-[#EC0000]">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="lucide lucide-badge-percent"
+                    aria-hidden="true"
+                  >
+                    <path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"></path>
+                    <path d="m15 9-6 6"></path>
+                    <path d="M9 9h.01"></path>
+                    <path d="M15 15h.01"></path>
+                  </svg>
+                </div>
+                <span className="text-xs font-bold uppercase tracking-wider text-gray-400">
+                  Taxas de Feirão
                 </span>
               </div>
-            ))}
+              <p className="text-sm font-medium text-gray-600">
+                Aproveite as melhores condições do ano para financiar.
+              </p>
+            </div>
           </div>
-
-          {/* Buttons */}
-          <div className="flex items-center gap-4" style={{ flexWrap: 'wrap' }}>
-            <a href="#cadastro" className="btn btn-primary" style={{ padding: '16px 32px', fontSize: '1.125rem' }}>
-              Quero Participar <ArrowRight size={20} />
-            </a>
-            <a href="#veiculos" className="btn btn-outline" style={{ padding: '16px 32px', fontSize: '1.125rem', color: 'white', borderColor: 'rgba(255,255,255,0.3)' }}>
-              Ver Ofertas
-            </a>
-          </div>
-
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 };
 
